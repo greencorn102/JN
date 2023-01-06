@@ -38,3 +38,20 @@ INPUT_NODE = [t.op.name for t in model.inputs]
 OUTPUT_NODE = [t.op.name for t in model.outputs]
 print(INPUT_NODE, OUTPUT_NODE)
 frozen_graph = freeze_graph(session.graph, session, [out.op.name for out in model.outputs], save_pb_dir=save_pb_dir)
+
+
+#3#
+### pytorch with CUDA for Jetson nano
+# https://stackoverflow.com/questions/73250147/pytorch-cuda-is-not-available
+## DEPENDENCIES:
+sudo apt-get install libopenblas-dev
+wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+
+pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+
+
+
+#4#
+### pytorch CUDA for PC
+# https://pytorch.org/get-started/locally/
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
